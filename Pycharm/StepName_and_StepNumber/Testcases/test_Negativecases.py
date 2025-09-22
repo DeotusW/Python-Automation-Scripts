@@ -2,14 +2,14 @@ import json
 
 import pytest
 
-from PythonAutomation.Pycharm.Baseclass.Baseclass import Baseclass
-from PythonAutomation.Pycharm.RequestMethods.requestMethods import RequestMain
+from Pycharm.Baseclass.Baseclass import Baseclass
+from Pycharm.RequestMethods.requestMethods import RequestMain
 
 
 class TestNegativeCases(Baseclass):
 
     #Loading Testdata from Json file.
-    with open("C:/Users/dwilson3/Documents/Pycharm/PythonAutomation/Pycharm/StepName_and_StepNumber/Testdata/stepNumber_and_stepNumber_Testdata.json","r") as f:
+    with open("C:/Users/dwilson3/Documents/Python-Automation-Scripts/Pycharm/StepName_and_StepNumber/Testdata/stepNumber_and_stepNumber_Testdata.json","r") as f:
         testdata = json.load(f)
 
     URL = "https://hardware-activation.stg.agco-fuse-services.com/v1alpha1/statuses/"
