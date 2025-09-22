@@ -1,6 +1,6 @@
 import requests
-from PythonAutomation.Pycharm.Baseclass.Baseclass import Baseclass
-from PythonAutomation.Pycharm.RequestMethods.requestMethods import RequestMain
+from Pycharm.Baseclass.Baseclass import Baseclass
+from Pycharm.RequestMethods.requestMethods import RequestMain
 
 
 class TestHappyPath(Baseclass):

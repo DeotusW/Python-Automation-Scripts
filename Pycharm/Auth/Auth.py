@@ -1,6 +1,6 @@
 import requests
 from requests.auth import HTTPBasicAuth
-from PythonAutomation.Pycharm.RequestMethods.requestMethods import RequestMain
+from Pycharm.RequestMethods.requestMethods import RequestMain
 
 
 class fuseAuth:
