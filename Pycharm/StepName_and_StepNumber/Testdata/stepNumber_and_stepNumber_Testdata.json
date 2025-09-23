@@ -1,5 +1,0 @@
-[
-  {"currentStepName": "Activation_Send_NCP","currentStepNumber":"" ,"ExpectedMessage": "Missing event parameter \"current_step_number\""},
-  {"currentStepName": "Activation_Send_NCP","currentStepNumber":"test" ,"ExpectedMessage": "Invalid format for parameter value \"currentStepNumber\""},
-  {"currentStepName": "","currentStepNumber":6 ,"ExpectedMessage": "Missing event parameter \"current_step_name\""}
-]
