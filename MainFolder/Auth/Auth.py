@@ -1,3 +1,5 @@
+from configparser import ConfigParser
+
 import requests
 from requests.auth import HTTPBasicAuth
 from RequestMethods.requestMethods import RequestMain
@@ -31,10 +33,8 @@ class fuseAuth:
         response = requests.post(self.basicURL,self.body,self.header,auth=HTTPBasicAuth(self.Fuse_ClientID,self.Fuse_Secret))
         #response = self.request.post_method(self.basicURL,body=self.body,headers=self.header,auth=HTTPBasicAuth(self.Fuse_ClientID,self.Fuse_Secret))
         jsonAuthResponse = response.json()
-        #print(jsonAuthResponse)
+        print(jsonAuthResponse)
         accessToken = jsonAuthResponse["access_token"]
 
         return accessToken
-
-
 
