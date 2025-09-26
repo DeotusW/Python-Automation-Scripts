@@ -36,8 +36,7 @@ jobs:
         run: |
           mkdir -p allure-results
           export PYTHONPATH=$PYTHONPATH:$(pwd)/MainFolder
-          pytest --maxfail=1 --disable-warnings -q \
-            --alluredir=allure-results
+          pytest --alluredir=allure-results --disable-warnings -q
 
       # Install Java (required by Allure CLI)
       - name: Setup Java
