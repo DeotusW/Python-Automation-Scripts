@@ -8,6 +8,9 @@ class Baseclass:
     def setup_class(cls):
         CurrentFilePath = Path(__file__).resolve()
         config = ConfigParser()
-        config.read(CurrentFilePath.parent.parent/"StepName_and_StepNumber"/"config.fg")
-        cls.fuse = fuseAuth(config)
-        cls.token = cls.fuse.authentication()
+        try:
+            config.read(CurrentFilePath.parent.parent/"StepName_and_StepNumber"/"config.fg")
+            cls.fuse = fuseAuth(config)
+            cls.token = cls.fuse.authentication()
+        except FileNotFoundError:
+            raise FileNotFoundError("The Config file is missing - File not Found!")
