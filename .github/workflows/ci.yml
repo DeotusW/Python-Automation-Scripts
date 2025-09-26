@@ -1,5 +1,4 @@
-name: CI - pytest + Allure
-
+name: StepNumber and StepName
 on:
   push:
     branches: [ main ]
@@ -36,7 +35,8 @@ jobs:
         run: |
           mkdir -p MainFolder/allure-results
           export PYTHONPATH=$PYTHONPATH:$(pwd)/MainFolder
-          pytest --maxfail=1 --disable-warnings -q --alluredir=MainFolder/allure-results
+          pytest --maxfail=1 --disable-warnings -q \
+            --alluredir=MainFolder/allure-results
 
         continue-on-error: false
 
@@ -44,30 +44,12 @@ jobs:
       - name: Setup Java (required for Allure CLI)
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'    # Eclipse Temurin (AdoptOpenJDK successor)
+          distribution: 'temurin'
           java-version: '11'
 
       - name: Install Allure CLI
         run: |
-          # choose an Allure CLI version; adjust if you want a different one
           ALLURE_VERSION=2.21.0
           wget -q -O /tmp/allure.zip "https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.zip"
           unzip -q /tmp/allure.zip -d /tmp
           echo "/tmp/allure-${ALLURE_VERSION}/bin" >> $GITHUB_PATH
-
-      - name: Generate Allure HTML Report
-        run: |
-          # generate HTML report from results; creates MainFolder/allure-report
-          allure generate reports/allure-results -o MainFolder/allure-report --clean
-
-      - name: Upload Allure results artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results
-          path: Mainfolder/allure-results
-
-      - name: Upload generated Allure HTML report
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: MainFolder/allure-report
