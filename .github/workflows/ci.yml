@@ -1,4 +1,5 @@
-name: StepNumber and StepName
+name: StepNumber_and_StepName
+
 on:
   push:
     branches: [ main ]
@@ -53,3 +54,19 @@ jobs:
           wget -q -O /tmp/allure.zip "https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.zip"
           unzip -q /tmp/allure.zip -d /tmp
           echo "/tmp/allure-${ALLURE_VERSION}/bin" >> $GITHUB_PATH
+
+      - name: Generate Allure HTML Report
+        run: |
+          allure generate MainFolder/allure-results -o MainFolder/allure-report --clean
+
+      - name: Upload Allure results artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: MainFolder/allure-results
+
+      - name: Upload generated Allure HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: MainFolder/allure-report
