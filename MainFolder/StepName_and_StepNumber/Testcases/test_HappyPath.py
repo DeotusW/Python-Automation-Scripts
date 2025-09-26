@@ -30,7 +30,7 @@ class TestHappyPath(Baseclass):
             #print(jsonresponse)
 
             assert jsonresponse[0]["serialNumber"] == self.EXPECTED_SERIAL, "Serial Number doesn't match"
-            print(f" ID: {jsonresponse[0]["id"]}")
+            print(f"ID: {jsonresponse[0]['id']}")
 
         except Exception as e:
             raise AssertionError(f"Testcase Failed: {e}")
