@@ -7,7 +7,7 @@ class TestHappyPath(Baseclass):
 
     STEP_NAME = "Activation_Send_NCP"
     STEP_NUMBER = "6"
-    EXPECTED_SERIAL = "0410-000015"
+    EXPECTED_SERIAL = "0412-000105"
     STATUS_CODE = 200
     URL = "https://hrgav1lgvd.execute-api.eu-west-1.amazonaws.com/v1alpha1/statuses/"
 
