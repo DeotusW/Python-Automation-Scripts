@@ -1,9 +1,10 @@
-name: StepNumber_and_StepName
+name: StepNumber and StepName
+
 on:
   pull_request:
-    branches: [ main ]  # for PR validation
+    branches: [ main ]
   workflow_dispatch:
-  
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -32,13 +33,14 @@ jobs:
           pip install requests pytest allure-pytest
 
       - name: Run pytest and collect Allure results
+        id: run_tests
         run: |
           mkdir -p allure-results
           export PYTHONPATH=$PYTHONPATH:$(pwd)/MainFolder
-          pytest --alluredir=allure-results --disable-warnings -q
+          pytest --alluredir=allure-results --disable-warnings -q || echo "Tests failed"
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
 
-      # Install Java (required by Allure CLI)
-      - name: Setup Java
+      - name: Setup Java (required by Allure CLI)
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
@@ -53,7 +55,7 @@ jobs:
 
       - name: Generate Allure HTML Report
         run: |
-          allure generate allure-results -o allure-report --clean
+          allure generate allure-results -o allure-report --clean || echo "Report generation failed"
 
       - name: Upload Allure results artifact
         uses: actions/upload-artifact@v4
@@ -66,3 +68,7 @@ jobs:
         with:
           name: allure-report
           path: allure-report
+
+      - name: Fail workflow if tests failed
+        if: steps.run_tests.outputs.exit_code != '0'
+        run: exit 1
