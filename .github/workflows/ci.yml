@@ -1,9 +1,7 @@
 name: StepNumber_and_StepName
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ main ]  # for PR validation
   workflow_dispatch:
   
 jobs:
