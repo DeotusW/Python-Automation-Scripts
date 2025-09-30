@@ -37,7 +37,7 @@ jobs:
         run: |
           mkdir -p allure-results
           export PYTHONPATH=$PYTHONPATH:$(pwd)/MainFolder
-          pytest --alluredir=allure-results --disable-warnings -q || echo "Tests failed"
+          pytest --alluredir=allure-results --disable-warnings -q
           echo "exit_code=$?" >> $GITHUB_OUTPUT
 
       - name: Setup Java (required by Allure CLI)
