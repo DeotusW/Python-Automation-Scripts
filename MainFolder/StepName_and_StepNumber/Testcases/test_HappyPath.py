@@ -7,7 +7,7 @@ class TestHappyPath(Baseclass):
 
     expected = {
     "serialNumber": "0412-000105",
-    "currentStepName": "Activation_Send_NCP",
+    "currentStepName": "Activation_Send_NC",
     "currentStepNumber": 6
     }
 
@@ -42,5 +42,6 @@ class TestHappyPath(Baseclass):
             print(f" ID: {jsonresponse[0]['id']}")
         except Exception as e:
             raise AssertionError(f"Testcase Failed: {e}")
+
 
 
