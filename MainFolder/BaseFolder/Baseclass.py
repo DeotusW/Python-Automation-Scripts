@@ -9,7 +9,7 @@ class Baseclass:
         CurrentFilePath = Path(__file__).resolve()
         config = ConfigParser()
         try:
-            config.read(CurrentFilePath.parent.parent/"StepName_and_StepNumber"/"config.fg")
+            config.read(CurrentFilePath.parent.parent/"Testcases"/"config.fg")
             cls.fuse = fuseAuth(config)
             cls.token = cls.fuse.authentication()
         except FileNotFoundError:
