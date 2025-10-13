@@ -1,4 +1,4 @@
-name: StepNumber and StepName
+name: Testcases Run
 
 on:
   pull_request:
