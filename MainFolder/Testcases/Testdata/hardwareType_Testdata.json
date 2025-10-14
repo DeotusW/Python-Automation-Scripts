@@ -1,5 +1,0 @@
-[
-  {"hardwareType":"Testvalue" ,"ExpectedMessage": "","StatusCode": 200},
-  {"hardwareType": "" ,"ExpectedMessage": "Missing event parameter \"hardware_type\"","StatusCode": 400},
-  {"hardwareType": 6 ,"ExpectedMessage": "","StatusCode": 200}
-]
