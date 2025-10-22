@@ -15,12 +15,15 @@ class BaseHappyPath(Baseclass):
         response = RequestMain().get_method(self.URL,params = self.PARAMS,headers=self.HEADERS)
         return response
 
-    def validate_json_response(self,response,jsonResponse,INDEX):
+    def validate_json_response(self,response,jsonResponse):
         RequestMain().validate_statuscode(response,self.STATUSCODE)
         if not jsonResponse:
             raise AssertionError("API returned an empty response")
-        for key,value in self.EXPECTED.items():
-            assert jsonResponse[INDEX][key] == value, f"{jsonResponse[INDEX][key]} Mismatch! - Expected: {value}, Actual: {jsonResponse[INDEX][key]}"
+        for item in jsonResponse:
+            if item["id"] == self.EXPECTED["id"]:
+                print(f"ID: {item['id']}")
+                for key, value in self.EXPECTED.items():
+                    assert item[key] == value, f"{item[key]} Mismatch! - Expected: {value}, Actual: {item[key]}"
 
     def HappyPathTest(self):
         try:
@@ -28,8 +31,7 @@ class BaseHappyPath(Baseclass):
             jsonResponse = response.json()
             if not jsonResponse:
                 raise AssertionError("JSON Response is Empty")
-            self.validate_json_response(response,jsonResponse,self.INDEX)
-            print(f" ID: {jsonResponse[self.INDEX]['id']}")
+            self.validate_json_response(response,jsonResponse)
         except Exception as e:
             raise AssertionError(f"Testcase Failed: {e}")
 

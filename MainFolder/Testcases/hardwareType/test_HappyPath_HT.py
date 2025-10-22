@@ -5,14 +5,14 @@ from RequestMethods.requestMethods import RequestMain
 
 class TestHappyPathHT(BaseHappyPath):
     EXPECTED = {
-        "serialNumber": "0411-000014",
+        "id":"1b3eb239-28a8-4ced-b999-2a7ec1ea17d0",
+        "serialNumber": "0412-000105",
         "hardwareType": "ACM"
     }
 
     PARAMS = {
         "hardwareType": EXPECTED["hardwareType"]
     }
-    INDEX = 1
 
     def test_Hardware_Type(self):
         self.HappyPathTest()
