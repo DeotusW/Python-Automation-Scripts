@@ -20,8 +20,8 @@ class BaseHappyPath(Baseclass):
         if not jsonResponse:
             raise AssertionError("API returned an empty response")
         for item in jsonResponse:
-            if item["id"] == self.EXPECTED["id"]:
-                print(f"ID: {item['id']}")
+            if item["serialNumber"] == self.EXPECTED["serialNumber"]:
+                print(f"Id: {item['id']}")
                 for key, value in self.EXPECTED.items():
                     assert item[key] == value, f"{item[key]} Mismatch! - Expected: {value}, Actual: {item[key]}"
 
